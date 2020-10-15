@@ -6,17 +6,18 @@ export const clientContext = React.createContext()
 export const ClientProvider = (props) => {
 
     const [ clients, setClients ] = useState([ ]);
+    
 
-    useEffect( () => {
-        axios.get('https://localhost:5001/Client')
-        .then(response => {
-          console.log(response);
-          setClients(response.data.clients);
-        })
-        .catch(error => {
-          console.log(error)
-        })
-      }, [])
+    useEffect(() => {
+        (async () => {
+            try {
+                const api = await axios.get('https://localhost:5001/Client');
+                setClients(api.data.clients);
+            } catch (e){
+                console.error(e);
+            }
+        })();
+      },[])
 
       return(
           <clientContext.Provider value = {[clients]}>
