@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import ClientList from './componenets/clientList';
+import ClientList from './components/clientList';
 import { ClientProvider } from './context/clientContext';
 
 function App() {
