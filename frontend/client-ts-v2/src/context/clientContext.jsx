@@ -11,7 +11,7 @@ export const ClientProvider = (props) => {
     useEffect(() => {
         (async () => {
             try {
-                const api = await axios.get('https://localhost:5001/Client');
+                const api = await axios.get('https://localhost:5001/clients');
                 setClients(api.data.clients);
             } catch (e){
                 console.error(e);
