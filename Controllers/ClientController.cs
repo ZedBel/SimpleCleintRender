@@ -2,42 +2,46 @@ using System;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 
-
+/// <summary>
+/// Returns a list of Clients
+/// </summary>
+/// <returns>A list of client document</returns>
 [ApiController]
 [Route("[controller]")]
-public class ClientController : ControllerBase {
+public class clientsController : ControllerBase {
 
-    Root client;
+    Root clients;
     
-    public ClientController(ClientRepository clientRepository){
-       client = clientRepository.GetAllDate();
+    public clientsController(ClientRepository clientRepository){
+        clients = clientRepository.GetAllDate();
     }
-
     
     [HttpGet]
     public Root Get(){
         
-        return client;
+        return clients;
     }
 
 }
 
 
-
+/// <summary>
+/// Returns a list of Clients
+/// </summary>
+/// <returns>A list of client document</returns>
 [ApiController]
-[Route("[controller]")]
-public class GetClientsController : ControllerBase {
+[Route("v2/[controller]")]
+public class clientDocumentsController : ControllerBase {
 
-    JsonDocument clientDoc;
+    JsonDocument clients;
    
-   public GetClientsController(ClientRepository repo){
-       clientDoc = repo.clientsDocument();
+   public clientDocumentsController(ClientRepository clientRepository){
+       clients = clientRepository.ClientsDocument();
    }
 
-    
     [HttpGet]
     public JsonDocument Get(){
-        return clientDoc;
+        return clients;
     }
 
 }
