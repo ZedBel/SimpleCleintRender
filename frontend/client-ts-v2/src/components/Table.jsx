@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { clientContext } from '../context/clientContext';
+import { useSelector } from "react-redux";
+
 
 const Table = () => {
-    const [clients] = useContext(clientContext);
+    const clients = useSelector(state => state.clients.clients);
     return(
         <table className="table">
             <thead>

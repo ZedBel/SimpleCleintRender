@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useEffect} from 'react';
 import './App.css';
 import ClientList from './components/clientList';
-import { ClientProvider } from './context/clientContext';
+import {getClients} from "./store/actions/clientsActions";
+import { useDispatch } from 'react-redux';
 
 function App() {
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    dispatch(getClients());
+  }, [dispatch]);
   return (
-    
-    <ClientProvider>
-      <div className="App">
-        <ClientList />
-      </div>
-    </ClientProvider>
+  <div className="App">
+    <ClientList />
+  </div>
     
   );
 }
